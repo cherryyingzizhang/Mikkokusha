@@ -2,10 +2,10 @@ package net.cherryzhang.sekuhara.LoginAndRegistration;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +15,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
+import net.cherryzhang.sekuhara.R;
 
-import com.example.cherry_zhang.androidbeaconexample.R;
-import com.parse.LogInCallback;
-import com.parse.Parse;
-import com.parse.ParseException;
-import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
 public class LoginAndRegistrationFragment extends Fragment
 {
@@ -43,7 +37,6 @@ public class LoginAndRegistrationFragment extends Fragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //initialize the login service with api key if we have one.
     }
 
@@ -284,12 +277,8 @@ public class LoginAndRegistrationFragment extends Fragment
 
 
     public void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
 
-        //TODO
-        //com.example.cherry_zhang.juver.Activities.Application.LoginAndRegistration.LoginAndRegistrationActivity.pageIndicator.setVisibility(show ? View.GONE : View.VISIBLE);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
@@ -311,8 +300,6 @@ public class LoginAndRegistrationFragment extends Fragment
                 }
             });
         } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
             PV_progressBar.setVisibility(show ? View.VISIBLE : View.GONE);
             LL_loginForm.setVisibility(show ? View.GONE : View.VISIBLE);
         }

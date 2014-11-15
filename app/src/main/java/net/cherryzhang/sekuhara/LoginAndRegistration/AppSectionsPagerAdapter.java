@@ -1,10 +1,11 @@
 package net.cherryzhang.sekuhara.LoginAndRegistration;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentManager;
+
 
 public class AppSectionsPagerAdapter extends FragmentPagerAdapter
 {
@@ -19,13 +20,13 @@ public class AppSectionsPagerAdapter extends FragmentPagerAdapter
         switch (i) {
             case 2:
                 //the third screen (index 2) will be the login and registration screen
-                return new com.example.cherry_zhang.androidbeaconexample.LoginAndRegistration.LoginAndRegistrationFragment();
+                return new LoginAndRegistrationFragment();
 
             default:
                 // The other sections of the app are dummy placeholders.
-                Fragment fragment = new com.example.cherry_zhang.androidbeaconexample.LoginAndRegistration.SummaryOfAppFragment();
+                Fragment fragment = new SummaryOfAppFragment();
                 Bundle args = new Bundle();
-                args.putInt(com.example.cherry_zhang.androidbeaconexample.LoginAndRegistration.SummaryOfAppFragment.ARG_SECTION_NUMBER, i + 1);
+                args.putInt(SummaryOfAppFragment.ARG_SECTION_NUMBER, i + 1);
                 fragment.setArguments(args);
                 return fragment;
         }
