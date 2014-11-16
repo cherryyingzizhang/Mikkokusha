@@ -6,8 +6,12 @@ import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.parse.GetCallback;
 import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import net.cherryzhang.sekuhara.R;
 
@@ -17,6 +21,7 @@ public class ReceiverActivity extends Activity
 {
     private int REQUEST_ENABLE_BT = 1;
     TextToSpeech tts;
+    TextView tvtv;
 
     Handler handler;
 
@@ -25,7 +30,27 @@ public class ReceiverActivity extends Activity
         public void run()
         {
             //parse query
-            handler.postDelayed(this, 10000);
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Receive");
+            query.getInBackground("5xZ2q7kB01", new GetCallback<ParseObject>()
+            {
+                @Override
+                public void done(ParseObject parseObject, com.parse.ParseException e)
+                {
+                    if (e == null) {
+                        // object will be your game score
+                        if (parseObject.getBoolean("isCalled") == true)
+                        {
+                            tts.speak("痴漢があります。痴漢があります。痴漢があります。痴漢があります。", TextToSpeech.QUEUE_FLUSH, null);
+                            tvtv.setText("痴漢があります!!!");
+                            handler.removeCallbacks(r);
+                        }
+                    } else {
+                        // something went wrong
+                    }
+                    handler.postDelayed(r, 3000);
+                }
+            });
+
         }
     };
 
@@ -34,6 +59,8 @@ public class ReceiverActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receiver);
+
+        tvtv = (TextView) findViewById(R.id.tvtv);
 
         Parse.initialize(this,
                 "TsVbzF7jXzY1C0o86V2xxAxgSxvy4jmbyykOabPl",

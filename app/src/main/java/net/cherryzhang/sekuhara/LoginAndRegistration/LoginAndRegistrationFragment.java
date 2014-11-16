@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +16,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.parse.LogInCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
-import net.cherryzhang.sekuhara.BluetoothButtonAndChat.BluetoothButtonAndMessagingActivity;
 import net.cherryzhang.sekuhara.R;
+import net.cherryzhang.sekuhara.ReceiverActivity.ReceiverActivity;
 
 
 public class LoginAndRegistrationFragment extends Fragment
@@ -43,6 +50,7 @@ public class LoginAndRegistrationFragment extends Fragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //initialize the login service with api key if we have one.
+        Parse.initialize(getActivity(),"TsVbzF7jXzY1C0o86V2xxAxgSxvy4jmbyykOabPl","VzamwWm4WswbDFxrxos2oSerQ2Av4RM6J5mNnNgr");
     }
 
     @Override
@@ -174,6 +182,32 @@ public class LoginAndRegistrationFragment extends Fragment
             // perform the user registration attempt
             showProgress(true);
             //mAuthTask = new UserLoginTask(email, password);
+            final ParseUser user = new ParseUser();
+            user.setUsername(ET_email.getText().toString());
+            user.setPassword(ET_password.getText().toString());
+            user.setEmail(ET_email.getText().toString());
+
+            user.signUpInBackground(new SignUpCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+                        // Hooray! Registration successful
+                        Toast.makeText(getActivity().getApplicationContext(), "Registration successful", Toast.LENGTH_SHORT)
+                                .show();
+                        // TODO: Change this intent or even erase it and do something else after registration successful
+                        Intent GoToApplication = new Intent(getActivity(),ReceiverActivity.class);
+                        startActivity(GoToApplication);
+                        showProgress(false);
+                        getActivity().finish();
+                    } else {
+                        // Sign up didn't succeed. Look at the ParseException
+                        // to figure out what went wrong
+                        Toast.makeText(getActivity().getApplicationContext(), "Signup unsuccessful: " + e.getMessage(), Toast.LENGTH_SHORT)
+                                .show();
+                        showProgress(false);
+                    }
+                }
+            });
         }
     }
 
@@ -251,6 +285,27 @@ public class LoginAndRegistrationFragment extends Fragment
             // TODO: attempt authentication against a network service.
 
             //log in background
+            ParseUser.logInInBackground(mEmail.getText().toString(), mPassword.getText().toString(), new LogInCallback() {
+                @Override
+                public void done(ParseUser user, ParseException e) {
+                    if (user != null) {
+                        // Hooray! User login success.
+                        Intent successAndLogIn = new Intent(getActivity(), ReceiverActivity.class);
+                        startActivity(successAndLogIn);
+                        getActivity().finish();
+                        showProgress(false);
+                        Toast.makeText(getActivity().getApplicationContext(), "Login successful", Toast.LENGTH_SHORT)
+                                .show();
+                        returnStatement = true;
+                    } else {
+                        Toast.makeText(getActivity().getApplicationContext(), "Login unsuccessful" + e, Toast.LENGTH_SHORT)
+                                .show();
+                        Log.w("OMGPLSHELP", e);
+                        showProgress(false);
+                        returnStatement = false;
+                    }
+                }
+            });
 
             //simulate network access
             try
@@ -269,9 +324,9 @@ public class LoginAndRegistrationFragment extends Fragment
 
             // TODO: change the getactivity.finish thing
             if (success) {
-                Intent intent = new Intent(getActivity(), BluetoothButtonAndMessagingActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+//                Intent intent = new Intent(getActivity(), BluetoothButtonAndMessagingActivity.class);
+//                startActivity(intent);
+//                getActivity().finish();
             } else {
                 mPassword.setError(getString(R.string.error_incorrect_password));
                 mPassword.requestFocus();

@@ -9,6 +9,8 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Toast;
 
+import com.parse.Parse;
+
 import net.cherryzhang.sekuhara.MagnetService.ChatHeadService;
 import net.cherryzhang.sekuhara.R;
 
@@ -30,7 +32,9 @@ public class BluetoothButtonAndMessagingActivity extends FragmentActivity
         myPagerAdapter = new TabsPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(myPagerAdapter);
         PagerTitleStrip pagerTitleStrip = (PagerTitleStrip)findViewById(R.id.pager_title_strip);
-
+        Parse.initialize(this,
+                "TsVbzF7jXzY1C0o86V2xxAxgSxvy4jmbyykOabPl",
+                "VzamwWm4WswbDFxrxos2oSerQ2Av4RM6J5mNnNgr");
         new LongOperation().execute();
     }
 

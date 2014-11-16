@@ -27,6 +27,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
+import com.parse.Parse;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import net.cherryzhang.sekuhara.R;
@@ -46,6 +47,8 @@ public class LoginAndRegistrationActivity extends FragmentActivity implements Ac
         setContentView(R.layout.activity_swipe_view_login_and_registration);
 
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
+
+        Parse.initialize(this, "TsVbzF7jXzY1C0o86V2xxAxgSxvy4jmbyykOabPl", "VzamwWm4WswbDFxrxos2oSerQ2Av4RM6J5mNnNgr");
 
         final ActionBar actionBar = getActionBar();
         actionBar.hide();

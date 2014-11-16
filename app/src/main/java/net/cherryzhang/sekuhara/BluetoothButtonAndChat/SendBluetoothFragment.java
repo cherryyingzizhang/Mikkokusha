@@ -10,11 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import net.cherryzhang.sekuhara.R;
 
 public class SendBluetoothFragment extends Fragment
 {
-
     Button callForHelp;
     // List of URIs to provide to Android Beam
     private Uri[] mFileUris = new Uri[10];
@@ -37,7 +41,19 @@ public class SendBluetoothFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Receive");
+                query.getInBackground("5xZ2q7kB01", new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject object, ParseException e) {
+                        if (e == null) {
+                            // object will be your game score
+                            object.put("isCalled", true);
+                            object.saveInBackground();
+                        } else {
+                            // something went wrong
+                        }
+                    }
+                });
             }
         });
 
