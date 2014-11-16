@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="fbutton-1.0.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/info.hoang8f/fbutton/1.0.5/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/info.hoang8f/fbutton/1.0.5/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

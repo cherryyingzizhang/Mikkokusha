@@ -2,6 +2,7 @@ package net.cherryzhang.sekuhara.LoginAndRegistration;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,7 +15,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
+
+import com.romainpiel.shimmer.Shimmer;
+import com.romainpiel.shimmer.ShimmerTextView;
+
+import net.cherryzhang.sekuhara.BluetoothButtonAndChat.BluetoothButtonAndMessagingActivity;
 import net.cherryzhang.sekuhara.R;
 
 
@@ -32,7 +37,7 @@ public class LoginAndRegistrationFragment extends Fragment
     Button B_loginOrRegister, B_switchBetweenLoginOrRegister;
     LinearLayout LL_loginForm;
     ProgressBar PV_progressBar;
-    TextView TV_title;
+    ShimmerTextView TV_title;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,7 +58,10 @@ public class LoginAndRegistrationFragment extends Fragment
         B_switchBetweenLoginOrRegister = (Button) rootView.findViewById(R.id.B_switchBetweenLoginOrRegister);
         LL_loginForm = (LinearLayout) rootView.findViewById(R.id.LL_loginForm);
         PV_progressBar = (ProgressBar) rootView.findViewById(R.id.PV_progressBar);
-        TV_title = (TextView) rootView.findViewById(R.id.tv_Title);
+        TV_title = (ShimmerTextView) rootView.findViewById(R.id.tv_Title);
+
+        Shimmer shimmer = new Shimmer();
+        shimmer.start(TV_title);
 
         //TODO: separate
         // When user clicks the login or register button (it will login or register the user)
@@ -261,7 +269,9 @@ public class LoginAndRegistrationFragment extends Fragment
 
             // TODO: change the getactivity.finish thing
             if (success) {
-                //getActivity().finish();
+                Intent intent = new Intent(getActivity(), BluetoothButtonAndMessagingActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             } else {
                 mPassword.setError(getString(R.string.error_incorrect_password));
                 mPassword.requestFocus();
@@ -275,10 +285,7 @@ public class LoginAndRegistrationFragment extends Fragment
         }
     }
 
-
     public void showProgress(final boolean show) {
-
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);

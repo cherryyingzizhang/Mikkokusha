@@ -8,9 +8,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/ViewPagerIndicator" />
+            <option value="$PROJECT_DIR$/android-beacon-library-2.0" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/magnet" />
+            <option value="$PROJECT_DIR$/app/libs/AndroidBootstrap" />
+            <option value="$PROJECT_DIR$/app/libs/ViewPagerIndicator" />
+            <option value="$PROJECT_DIR$/app/libs/magnet" />
+            <option value="$PROJECT_DIR$/library-circular-1.0.1" />
           </set>
         </option>
       </GradleProjectSettings>

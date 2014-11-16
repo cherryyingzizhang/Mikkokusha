@@ -23,12 +23,12 @@ package net.cherryzhang.sekuhara.LoginAndRegistration;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+
 import com.viewpagerindicator.CirclePageIndicator;
-import net.cherryzhang.sekuhara.MagnetService.ChatHeadService;
+
 import net.cherryzhang.sekuhara.R;
 
 public class LoginAndRegistrationActivity extends FragmentActivity implements ActionBar.TabListener
@@ -44,9 +44,6 @@ public class LoginAndRegistrationActivity extends FragmentActivity implements Ac
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_view_login_and_registration);
-
-        //start the chathead
-        startService(new Intent(this, ChatHeadService.class));
 
         mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
 
@@ -72,9 +69,9 @@ public class LoginAndRegistrationActivity extends FragmentActivity implements Ac
 
         //TODO: make circle page indicator look better
         final float density = getResources().getDisplayMetrics().density;
-        pageIndicator.setRadius(5 * density);
-        pageIndicator.setPageColor(0xFF009900);
-        pageIndicator.setFillColor(0xFFFFFFFF);
+        pageIndicator.setRadius(6 * density);
+        pageIndicator.setPageColor(0xFFFFCCFF);
+        pageIndicator.setFillColor(0xFFFF6699);
         pageIndicator.setStrokeColor(0xFF000000);
         pageIndicator.setStrokeWidth(1);
 

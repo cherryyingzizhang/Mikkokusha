@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="docomo-aitalk-android-sdk-1.0.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/docomo-aitalk-android-sdk-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

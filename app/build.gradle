@@ -1,12 +1,20 @@
 apply plugin: 'com.android.application'
 
+repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
 android {
-    compileSdkVersion 19
+    compileSdkVersion 21
     buildToolsVersion "21.1.0"
 
     defaultConfig {
         applicationId "net.cherryzhang.sekuhara"
-        minSdkVersion 19
+        minSdkVersion 17
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -17,10 +25,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dexOptions {
+        preDexLibraries = false
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':ViewPagerIndicator')
+    compile project(':android-beacon-library-2.0')
     compile project(':magnet')
+    compile project(':ViewPagerIndicator')
+    compile 'com.romainpiel.shimmer:library:1.2.0@aar'
+    compile 'info.hoang8f:fbutton:1.0.5'
+    compile project(':AndroidBootstrap')
 }

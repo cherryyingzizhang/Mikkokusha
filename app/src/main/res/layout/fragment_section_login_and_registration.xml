@@ -3,8 +3,11 @@
   -->
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+             xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:id="@+id/LL_loginForm"
@@ -13,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <TextView
+        <com.romainpiel.shimmer.ShimmerTextView
             android:id="@+id/tv_Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,34 +25,47 @@
             android:layout_gravity="center"
             android:layout_marginBottom="25dp"/>
 
-        <EditText
+        <com.beardedhen.androidbootstrap.BootstrapEditText
             android:id="@+id/ET_email"
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
+            android:textSize="20sp"
+            bootstrapbutton:be_roundedCorners="true"
             android:layout_gravity="center_horizontal|top"
             android:hint="email address" />
 
-        <EditText
+        <com.beardedhen.androidbootstrap.BootstrapEditText
             android:id="@+id/ET_password"
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:hint="password"
             android:inputType="textPassword"
+            android:textSize="20sp"
             android:ems="10"
+            bootstrapbutton:be_roundedCorners="true"
             android:layout_gravity="center_horizontal|top" />
 
-        <EditText
+        <com.beardedhen.androidbootstrap.BootstrapEditText
             android:id="@+id/ET_confirmPassword"
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:hint="confirm password"
             android:inputType="textPassword"
             android:ems="10"
+            android:textSize="20sp"
+            bootstrapbutton:be_roundedCorners="true"
             android:layout_gravity="center_horizontal|top" />
 
-        <Button android:id="@+id/B_loginOrRegister"
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/B_loginOrRegister"
+        fbutton:buttonColor="#FF0066"
+        fbutton:shadowColor="#99003D"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp"
+        fbutton:cornerRadius="5dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -57,20 +73,30 @@
         android:layout_gravity="center"
         />
 
-        <Button android:id="@+id/B_switchBetweenLoginOrRegister"
+        <info.hoang8f.widget.FButton
+            android:id="@+id/B_switchBetweenLoginOrRegister"
+            fbutton:buttonColor="#FF0066"
+            fbutton:shadowColor="#99003D"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            fbutton:cornerRadius="5dp"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="I already have an account (log in)"
-            android:layout_gravity="center_horizontal|bottom"/>
+            android:layout_gravity="center_horizontal|bottom"
+            />
 
     </LinearLayout>
 
+    <!--style="?android:attr/progressBarStyleLarge"-->
     <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
+
+        style="@style/CircularThemeProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/PV_progressBar"
         android:layout_gravity="center_horizontal|center"
         android:visibility="gone"/>
+
 
 </FrameLayout>

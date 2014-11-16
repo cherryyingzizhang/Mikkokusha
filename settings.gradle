@@ -1,2 +1,4 @@
-include ':app', ':magnet'
-include ':ViewPagerIndicator'
+include ':app', ':android-beacon-library-2.0', ':magnet', ':ViewPagerIndicator', ':AndroidBootstrap', ':library-circular-1.0.1'
+project(':magnet').projectDir = new File('app/libs/magnet')
+project(':ViewPagerIndicator').projectDir = new File('app/libs/ViewPagerIndicator')
+project(':AndroidBootstrap').projectDir = new File('app/libs/AndroidBootstrap')

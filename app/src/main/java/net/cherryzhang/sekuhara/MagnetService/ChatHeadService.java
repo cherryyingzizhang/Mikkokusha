@@ -1,15 +1,20 @@
 package net.cherryzhang.sekuhara.MagnetService;
 
+import android.app.ActivityManager;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.premnirmal.Magnet.IconCallback;
 import com.premnirmal.Magnet.Magnet;
 
+import net.cherryzhang.sekuhara.BluetoothButtonAndChat.BluetoothChat.BluetoothChat;
 import net.cherryzhang.sekuhara.R;
+
+import java.util.List;
 
 /**
  * Created by Cherry_Zhang on 2014-11-15.
@@ -57,7 +62,29 @@ public class ChatHeadService extends Service implements IconCallback
     @Override
     public void onIconClick(View icon, float iconXPose, float iconYPose)
     {
-        mMagnet.destroy();
+        ActivityManager am = (ActivityManager) getApplicationContext().getSystemService(ACTIVITY_SERVICE);
+        // get the info from the currently running task
+        List< ActivityManager.RunningTaskInfo > taskInfo = am.getRunningTasks(1);
+
+        if (taskInfo.get(0).topActivity.getShortClassName().contentEquals(".BluetoothActivity.BluetoothActivity"))
+        {
+            Toast.makeText(this, "Do the bluetooth call", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), BluetoothChat.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            Toast.makeText(this, "Do the bluetooth call", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+//            Intent intent = new Intent(getApplicationContext(), BluetoothActivity.class);
+            Intent intent = new Intent(getApplicationContext(), BluetoothChat.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            Toast.makeText(this, "Do the bluetooth call", Toast.LENGTH_SHORT).show();
+
+        }
+//        ComponentName componentInfo = taskInfo.get(0).topActivity;
+//        componentInfo.getPackageName();
     }
 
     @Override

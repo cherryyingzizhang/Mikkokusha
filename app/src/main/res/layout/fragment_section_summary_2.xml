@@ -1,0 +1,41 @@
+<!--
+  fragment for activity_loginAndRegistration
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@drawable/background">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FF5B9B"
+        android:gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/TV_text1"
+        android:text="89.1%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="75sp"
+        android:padding="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/TV_text2"
+        android:text="痴漢被害に遭っても警察に通報・相談できない女性\n&lt;警察調べ&gt;"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:layout_below="@+id/TV_text1"
+        android:gravity="center"
+        />
+
+    </RelativeLayout>
+</RelativeLayout>

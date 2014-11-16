@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="net.cherryzhang.sekuhara.BluetoothButtonAndChat.ClickHereToChat"
+             xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+             android:background="#EFEFEF">
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/b_goToBluetoothChat"
+        fbutton:buttonColor="#FF0066"
+        fbutton:shadowColor="#99003D"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp"
+        fbutton:cornerRadius="5dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Click here to chat with someone"
+        android:layout_gravity="center"
+        />
+
+</FrameLayout>

@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ViewPagerIndicator/ViewPagerIndicator.iml" filepath="$PROJECT_DIR$/ViewPagerIndicator/ViewPagerIndicator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/libs/AndroidBootstrap/AndroidBootstrap.iml" filepath="$PROJECT_DIR$/app/libs/AndroidBootstrap/AndroidBootstrap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/libs/ViewPagerIndicator/ViewPagerIndicator.iml" filepath="$PROJECT_DIR$/app/libs/ViewPagerIndicator/ViewPagerIndicator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-beacon-library-2.0/android-beacon-library-2.0.iml" filepath="$PROJECT_DIR$/android-beacon-library-2.0/android-beacon-library-2.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/magnet/magnet.iml" filepath="$PROJECT_DIR$/magnet/magnet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-circular-1.0.1/library-circular-1.0.1.iml" filepath="$PROJECT_DIR$/library-circular-1.0.1/library-circular-1.0.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/libs/magnet/magnet.iml" filepath="$PROJECT_DIR$/app/libs/magnet/magnet.iml" />
       <module fileurl="file://$PROJECT_DIR$/tikan.iml" filepath="$PROJECT_DIR$/tikan.iml" />
     </modules>
   </component>
