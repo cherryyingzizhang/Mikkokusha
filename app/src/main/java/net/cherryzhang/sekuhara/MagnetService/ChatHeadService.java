@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.premnirmal.Magnet.IconCallback;
 import com.premnirmal.Magnet.Magnet;
 
@@ -23,6 +25,7 @@ public class ChatHeadService extends Service implements IconCallback
 {
 
     private Magnet mMagnet;
+    ImageView iconView;
 
     @Override
     public IBinder onBind(Intent intent)
@@ -33,7 +36,7 @@ public class ChatHeadService extends Service implements IconCallback
     @Override
     public void onCreate() {
         super.onCreate();
-        ImageView iconView = new ImageView(this);
+        iconView = new ImageView(this);
         iconView.setImageResource(R.drawable.ic_launcher);
         mMagnet = new Magnet.Builder(this)
                 .setIconView(iconView)
@@ -56,7 +59,9 @@ public class ChatHeadService extends Service implements IconCallback
     @Override
     public void onMove(float x, float y)
     {
-
+        YoYo.with(Techniques.Tada)
+                .duration(700)
+                .playOn(iconView);
     }
 
     @Override

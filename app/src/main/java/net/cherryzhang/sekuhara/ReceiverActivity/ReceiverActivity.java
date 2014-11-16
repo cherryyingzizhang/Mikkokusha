@@ -91,6 +91,27 @@ public class ReceiverActivity extends Activity
     }
 
     @Override
+    protected void onPause()
+    {
+        super.onPause();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Receive");
+        query.getInBackground("5xZ2q7kB01", new GetCallback<ParseObject>()
+        {
+            @Override
+            public void done(ParseObject parseObject, com.parse.ParseException e)
+            {
+                if (e == null) {
+                    // object will be your game score
+                    parseObject.put("isCalled",false);
+                    parseObject.saveInBackground();
+                } else {
+                    // something went wrong
+                }
+            }
+        });
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
         // Handle action bar item clicks here. The action bar will

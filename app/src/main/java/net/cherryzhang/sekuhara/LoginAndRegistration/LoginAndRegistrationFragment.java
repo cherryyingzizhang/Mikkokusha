@@ -26,8 +26,8 @@ import com.parse.SignUpCallback;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
+import net.cherryzhang.sekuhara.BluetoothButtonAndChat.BluetoothButtonAndMessagingActivity;
 import net.cherryzhang.sekuhara.R;
-import net.cherryzhang.sekuhara.ReceiverActivity.ReceiverActivity;
 
 
 public class LoginAndRegistrationFragment extends Fragment
@@ -195,7 +195,7 @@ public class LoginAndRegistrationFragment extends Fragment
                         Toast.makeText(getActivity().getApplicationContext(), "Registration successful", Toast.LENGTH_SHORT)
                                 .show();
                         // TODO: Change this intent or even erase it and do something else after registration successful
-                        Intent GoToApplication = new Intent(getActivity(),ReceiverActivity.class);
+                        Intent GoToApplication = new Intent(getActivity(),BluetoothButtonAndMessagingActivity.class);
                         startActivity(GoToApplication);
                         showProgress(false);
                         getActivity().finish();
@@ -290,7 +290,7 @@ public class LoginAndRegistrationFragment extends Fragment
                 public void done(ParseUser user, ParseException e) {
                     if (user != null) {
                         // Hooray! User login success.
-                        Intent successAndLogIn = new Intent(getActivity(), ReceiverActivity.class);
+                        Intent successAndLogIn = new Intent(getActivity(), BluetoothButtonAndMessagingActivity.class);
                         startActivity(successAndLogIn);
                         getActivity().finish();
                         showProgress(false);
