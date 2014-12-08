@@ -12,11 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:padding="32dp"
         android:layout_gravity="top"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"/>
 
     <com.romainpiel.shimmer.ShimmerTextView
         android:id="@+id/TV_text2"
@@ -27,9 +28,8 @@
         android:padding="32dp"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/TV_text1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="142dp"/>
+        android:layout_above="@+id/TV_text3"
+        android:layout_centerHorizontal="true"/>
 
     <com.romainpiel.shimmer.ShimmerTextView
         android:id="@+id/TV_text3"
@@ -40,7 +40,8 @@
         android:padding="10dp"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/TV_text2"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="315dp"/>
 
 </RelativeLayout>

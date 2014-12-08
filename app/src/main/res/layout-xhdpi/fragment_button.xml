@@ -9,7 +9,7 @@
 
     <Button
         android:layout_width="490dp"
-        android:layout_height="340dp"
+        android:layout_height="310dp"
         android:scaleType="centerInside"
         android:background="@drawable/callforhelpbutton"
         android:id="@+id/callForHelp"

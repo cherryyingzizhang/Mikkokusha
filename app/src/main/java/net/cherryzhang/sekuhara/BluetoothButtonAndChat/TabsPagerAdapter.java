@@ -3,7 +3,10 @@ package net.cherryzhang.sekuhara.BluetoothButtonAndChat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.Menu;
 import android.view.ViewGroup;
+
+import net.cherryzhang.sekuhara.BluetoothButtonAndChat.BluetoothChat.BluetoothChat;
 
 /**
  * Created by Cherry_Zhang on 2014-11-16.
@@ -11,15 +14,18 @@ import android.view.ViewGroup;
 public class TabsPagerAdapter extends FragmentPagerAdapter
 {
     private static final String[] titles = { "密告する", "チャットする"};
+    BluetoothChat bluetoothChat;
+    Menu menu;
 
     @Override
     public CharSequence getPageTitle(int position) {
         return titles[position];
     }
 
-    public TabsPagerAdapter(FragmentManager fm)
+    public TabsPagerAdapter(FragmentManager fm, Menu menu)
     {
         super(fm);
+        this.menu = menu;
     }
 
     @Override
@@ -29,10 +35,16 @@ public class TabsPagerAdapter extends FragmentPagerAdapter
             case 0:
                 return new SendBluetoothFragment();
             case 1:
-                return new ClickHereToChat();
+                bluetoothChat = new BluetoothChat();
+                return bluetoothChat;
             default:
                 return new Fragment(); //should never go here
         }
+    }
+
+    public Fragment getBlueToothInstance()
+    {
+        return bluetoothChat;
     }
 
     @Override

@@ -26,8 +26,8 @@ import com.parse.SignUpCallback;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
-import net.cherryzhang.sekuhara.BluetoothButtonAndChat.BluetoothButtonAndMessagingActivity;
 import net.cherryzhang.sekuhara.R;
+import net.cherryzhang.sekuhara.ReceiverActivity.ReceiverActivity;
 
 
 public class LoginAndRegistrationFragment extends Fragment
@@ -195,15 +195,17 @@ public class LoginAndRegistrationFragment extends Fragment
                         Toast.makeText(getActivity().getApplicationContext(), "Registration successful", Toast.LENGTH_SHORT)
                                 .show();
                         // TODO: Change this intent or even erase it and do something else after registration successful
-                        Intent GoToApplication = new Intent(getActivity(),BluetoothButtonAndMessagingActivity.class);
+                        Intent GoToApplication = new Intent(getActivity(),ReceiverActivity.class);
                         startActivity(GoToApplication);
                         showProgress(false);
                         getActivity().finish();
                     } else {
                         // Sign up didn't succeed. Look at the ParseException
                         // to figure out what went wrong
-                        Toast.makeText(getActivity().getApplicationContext(), "Signup unsuccessful: " + e.getMessage(), Toast.LENGTH_SHORT)
-                                .show();
+                        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Signup unsuccessful: " + e.getMessage(), Toast.LENGTH_SHORT);
+                        View view = toast.getView();
+                        view.setBackgroundResource(R.drawable.custom_bkg_for_toast);
+                        toast.show();
                         showProgress(false);
                     }
                 }
@@ -290,16 +292,20 @@ public class LoginAndRegistrationFragment extends Fragment
                 public void done(ParseUser user, ParseException e) {
                     if (user != null) {
                         // Hooray! User login success.
-                        Intent successAndLogIn = new Intent(getActivity(), BluetoothButtonAndMessagingActivity.class);
+                        Intent successAndLogIn = new Intent(getActivity(), ReceiverActivity.class);
                         startActivity(successAndLogIn);
                         getActivity().finish();
                         showProgress(false);
-                        Toast.makeText(getActivity().getApplicationContext(), "Login successful", Toast.LENGTH_SHORT)
-                                .show();
+                        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Login successful", Toast.LENGTH_SHORT);
+                        View view = toast.getView();
+                        view.setBackgroundResource(R.drawable.custom_bkg_for_toast);
+                        toast.show();
                         returnStatement = true;
                     } else {
-                        Toast.makeText(getActivity().getApplicationContext(), "Login unsuccessful" + e, Toast.LENGTH_SHORT)
-                                .show();
+                        Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Login unsuccessful" + e, Toast.LENGTH_SHORT);
+                        View view = toast.getView();
+                        view.setBackgroundResource(R.drawable.custom_bkg_for_toast);
+                        toast.show();
                         Log.w("OMGPLSHELP", e);
                         showProgress(false);
                         returnStatement = false;

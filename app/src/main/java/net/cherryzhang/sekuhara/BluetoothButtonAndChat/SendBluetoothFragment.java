@@ -1,14 +1,15 @@
 package net.cherryzhang.sekuhara.BluetoothButtonAndChat;
 
-import android.net.Uri;
-import android.nfc.NfcAdapter;
-import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.parse.GetCallback;
 import com.parse.ParseException;
@@ -20,11 +21,6 @@ import net.cherryzhang.sekuhara.R;
 public class SendBluetoothFragment extends Fragment
 {
     Button callForHelp;
-    // List of URIs to provide to Android Beam
-    private Uri[] mFileUris = new Uri[10];
-    NfcAdapter mNfcAdapter;
-    // Flag to indicate that Android Beam is available
-    boolean mAndroidBeamAvailable  = false;
 
     public SendBluetoothFragment()
     {
@@ -49,8 +45,16 @@ public class SendBluetoothFragment extends Fragment
                             // object will be your game score
                             object.put("isCalled", true);
                             object.saveInBackground();
+                            Toast toast = Toast.makeText(getActivity().getApplicationContext(), "The alarm is going to sound!", Toast.LENGTH_SHORT);
+                            View view = toast.getView();
+                            view.setBackgroundResource(R.drawable.custom_bkg_for_toast);
+                            toast.show();
                         } else {
                             // something went wrong
+                            Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Error", Toast.LENGTH_SHORT);
+                            View view = toast.getView();
+                            view.setBackgroundResource(R.drawable.custom_bkg_for_toast);
+                            toast.show();
                         }
                     }
                 });
@@ -60,17 +64,11 @@ public class SendBluetoothFragment extends Fragment
         return rootView;
     }
 
-    private class FileUriCallback implements
-            NfcAdapter.CreateBeamUrisCallback {
-        public FileUriCallback() {
-        }
-        /**
-         * Create content URIs as needed to share with another device
-         */
-        @Override
-        public Uri[] createBeamUris(NfcEvent event) {
-            return mFileUris;
-        }
-    }
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+//    {
+//        Log.e("SendBluetoothFragment ", "oncreateoptionsmenu");
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
 }
 

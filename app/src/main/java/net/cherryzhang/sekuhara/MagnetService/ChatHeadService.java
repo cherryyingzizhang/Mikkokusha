@@ -13,7 +13,7 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.premnirmal.Magnet.IconCallback;
 import com.premnirmal.Magnet.Magnet;
 
-import net.cherryzhang.sekuhara.BluetoothButtonAndChat.BluetoothChat.BluetoothChat;
+import net.cherryzhang.sekuhara.BluetoothButtonAndChat.BluetoothButtonAndMessagingActivity;
 import net.cherryzhang.sekuhara.R;
 
 import java.util.List;
@@ -36,8 +36,12 @@ public class ChatHeadService extends Service implements IconCallback
     @Override
     public void onCreate() {
         super.onCreate();
+
         iconView = new ImageView(this);
         iconView.setImageResource(R.drawable.ic_launcher);
+        YoYo.with(Techniques.RubberBand)
+                .duration(700)
+                .playOn(iconView);
         mMagnet = new Magnet.Builder(this)
                 .setIconView(iconView)
                 .setIconCallback(this)
@@ -67,6 +71,9 @@ public class ChatHeadService extends Service implements IconCallback
     @Override
     public void onIconClick(View icon, float iconXPose, float iconYPose)
     {
+        YoYo.with(Techniques.Tada)
+                .duration(700)
+                .playOn(icon);
         ActivityManager am = (ActivityManager) getApplicationContext().getSystemService(ACTIVITY_SERVICE);
         // get the info from the currently running task
         List< ActivityManager.RunningTaskInfo > taskInfo = am.getRunningTasks(1);
@@ -74,18 +81,24 @@ public class ChatHeadService extends Service implements IconCallback
         if (taskInfo.get(0).topActivity.getShortClassName().contentEquals(".BluetoothActivity.BluetoothActivity"))
         {
             Toast.makeText(this, "Do the bluetooth call", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getApplicationContext(), BluetoothChat.class);
+            Intent intent = new Intent(getApplicationContext(), BluetoothButtonAndMessagingActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            Toast.makeText(this, "Do the bluetooth call", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this, "Do the bluetooth call", Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            view.setBackgroundResource(R.drawable.custom_bkg_for_toast);
+            toast.show();
         }
         else
         {
 //            Intent intent = new Intent(getApplicationContext(), BluetoothActivity.class);
-            Intent intent = new Intent(getApplicationContext(), BluetoothChat.class);
+            Intent intent = new Intent(getApplicationContext(), BluetoothButtonAndMessagingActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            Toast.makeText(this, "Do the bluetooth call", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this, "Do the bluetooth call", Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            view.setBackgroundResource(R.drawable.custom_bkg_for_toast);
+            toast.show();
 
         }
 //        ComponentName componentInfo = taskInfo.get(0).topActivity;

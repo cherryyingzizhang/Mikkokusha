@@ -40,14 +40,14 @@ public class ReceiverActivity extends Activity
                         // object will be your game score
                         if (parseObject.getBoolean("isCalled") == true)
                         {
-                            tts.speak("痴漢があります。痴漢があります。痴漢があります。痴漢があります。", TextToSpeech.QUEUE_FLUSH, null);
+                            tts.speak("痴漢です。痴漢です。痴漢です。痴漢です。", TextToSpeech.QUEUE_FLUSH, null);
                             tvtv.setText("痴漢があります!!!");
                             handler.removeCallbacks(r);
                         }
                     } else {
                         // something went wrong
                     }
-                    handler.postDelayed(r, 3000);
+                    handler.postDelayed(r, 500);
                 }
             });
 
